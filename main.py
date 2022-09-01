@@ -128,7 +128,7 @@ def caihongpi():
         data = json.loads(data)
         data = data["newslist"][0]["content"]
         if("XXX" in data):
-            data.replace("XXX","蒋蒋")
+            data.replace("XXX","沈忆佳")
         return data
     else:
         return ""
