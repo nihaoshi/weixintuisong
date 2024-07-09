@@ -189,8 +189,8 @@ def tip():
         res = conn.getresponse()
         data = res.read()
         data = json.loads(data)
-        pop = data["list"][0]["weather"]
-        tips = data["list"][0]["tips"]
+        pop = data["result"]["list"][0]["weather"]
+        tips = data["result"]["list"][0]["tips"]
         return pop,tips
     else:
         return "",""
