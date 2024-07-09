@@ -119,19 +119,21 @@ def get_ciba():
 #彩虹屁
 def caihongpi():
     if (caihongpi_API!="否"):
-        conn = http.client.HTTPSConnection('api.tianapi.com')  #接口域名
+        conn = http.client.HTTPSConnection('apis.tianapi.com')  #接口域名
         params = urllib.parse.urlencode({'key':caihongpi_API})
         headers = {'Content-type':'application/x-www-form-urlencoded'}
         conn.request('POST','/caihongpi/index',params,headers)
         res = conn.getresponse()
         data = res.read()
+        data = result.decode('utf-8')
         data = json.loads(data)
-        data = data["newslist"][0]["content"]
+        data = data["result"][0]["content"]
         if("XXX" in data):
-            data.replace("XXX","沈忆佳")
+            data.replace("XXX","蒋思文")
         return data
     else:
         return ""
+
 
 #健康小提示API
 def health():
