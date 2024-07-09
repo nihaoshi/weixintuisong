@@ -144,7 +144,7 @@ def health():
         res = conn.getresponse()
         data = res.read()
         data = json.loads(data)
-        data = data["content"]
+       data = data["result"]["content"]
         return data
     else:
         return ""
