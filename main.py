@@ -137,7 +137,7 @@ def caihongpi():
 #健康小提示API
 def health():
     if (health_API!="否"):
-        conn = http.client.HTTPSConnection('api.tianapi.com')  #接口域名
+        conn = http.client.HTTPSConnection('apis.tianapi.com')  #接口域名
         params = urllib.parse.urlencode({'key':health_API})
         headers = {'Content-type':'application/x-www-form-urlencoded'}
         conn.request('POST','/healthtip/index',params,headers)
