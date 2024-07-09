@@ -125,7 +125,6 @@ def caihongpi():
         conn.request('POST','/caihongpi/index',params,headers)
         res = conn.getresponse()
         data = res.read()
-        data = result.decode('utf-8')
         data = json.loads(data)
         data = data["result"]["content"]
         if("XXX" in data):
