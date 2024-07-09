@@ -144,7 +144,7 @@ def health():
         res = conn.getresponse()
         data = res.read()
         data = json.loads(data)
-        data = data["newslist"][0]["content"]
+        data = data["result"]["content"]
         return data
     else:
         return ""
@@ -152,14 +152,14 @@ def health():
 #星座运势
 def lucky():
     if (lucky_API!="否"):
-        conn = http.client.HTTPSConnection('api.tianapi.com')  #接口域名
+        conn = http.client.HTTPSConnection('apis.tianapi.com')  #接口域名
         params = urllib.parse.urlencode({'key':lucky_API,'astro':astro})
         headers = {'Content-type':'application/x-www-form-urlencoded'}
         conn.request('POST','/star/index',params,headers)
         res = conn.getresponse()
         data = res.read()
         data = json.loads(data)
-        data = "速配星座："+str(data["newslist"][7]["content"])+"\n爱情指数："+str(data["newslist"][1]["content"])+"   工作指数："+str(data["newslist"][2]["content"])+"\n今日概述："+str(data["newslist"][8]["content"])
+        data = "速配星座："+str(data["list"][7]["content"])+"\n爱情指数："+str(data["list"][1]["content"])+"   工作指数："+str(data["list"][2]["content"])+"\n今日概述："+str(data["newslist"][8]["content"])
         return data
     else:
         return ""
@@ -167,14 +167,14 @@ def lucky():
 #励志名言
 def lizhi():
     if (lizhi_API!="否"):
-        conn = http.client.HTTPSConnection('api.tianapi.com')  #接口域名
+        conn = http.client.HTTPSConnection('apis.tianapi.com')  #接口域名
         params = urllib.parse.urlencode({'key':lizhi_API})
         headers = {'Content-type':'application/x-www-form-urlencoded'}
-        conn.request('POST','/lzmy/index',params,headers)
+        conn.request('POST','/zaoan/index',params,headers)
         res = conn.getresponse()
         data = res.read()
         data = json.loads(data)
-        return data["newslist"][0]["saying"]
+        return data["result"]["content"]
     else:
         return ""
         
@@ -182,15 +182,15 @@ def lizhi():
 #下雨概率和建议
 def tip():
     if (tianqi_API!="否"):
-        conn = http.client.HTTPSConnection('api.tianapi.com')  #接口域名
+        conn = http.client.HTTPSConnection('apis.tianapi.com')  #接口域名
         params = urllib.parse.urlencode({'key':tianqi_API,'city':city})
         headers = {'Content-type':'application/x-www-form-urlencoded'}
         conn.request('POST','/tianqi/index',params,headers)
         res = conn.getresponse()
         data = res.read()
         data = json.loads(data)
-        pop = data["newslist"][0]["pop"]
-        tips = data["newslist"][0]["tips"]
+        pop = data["list"][0]["weather"]
+        tips = data["list"][0]["tips"]
         return pop,tips
     else:
         return "",""
