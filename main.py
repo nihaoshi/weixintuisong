@@ -191,6 +191,7 @@ def tip():
         data = json.loads(data)
         pop = data["result"]["list"][0]["weather"]
         tips = data["result"]["list"][0]["tips"]
+        print(pop,tips)
         return pop,tips
     else:
         return "",""
