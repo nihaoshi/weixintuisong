@@ -189,16 +189,15 @@ def tip():
         res = conn.getresponse()
         data = res.read()
         data = json.loads(data)
-        pop = data["result"]["list"][0]["weather"]
         tips = data["result"]["list"][0]["tips"]
-        print(pop,tips)
-        return pop,tips
+        return tips
     else:
         return "",""
 
 #推送信息
 def send_message(to_user, access_token, city_name, weather, max_temperature, min_temperature, pipi, lizhi, tips, note_en, note_ch, health_tip, lucky_):
     url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={}".format(access_token)
+    print(tips)
     week_list = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
     year = localtime().tm_year
     month = localtime().tm_mon
