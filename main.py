@@ -351,14 +351,14 @@ if __name__ == "__main__":
     #健康小提示
     health_tip = health()
     #下雨概率和建议
-    pop,tips = tip()
+    tips = tip()
     #励志名言
     lizhi = lizhi()
     #星座运势
     lucky_ = lucky()
     # 公众号推送消息
     for user in users:
-        send_message(user, accessToken, city, weather, max_temperature, min_temperature, pipi, lizhi,pop,tips, note_en, note_ch, health_tip, lucky_)
+        send_message(user, accessToken, city, weather, max_temperature, min_temperature, pipi, lizhi,tips, note_en, note_ch, health_tip, lucky_)
     import time
     time_duration = 3.5
     time.sleep(time_duration)
