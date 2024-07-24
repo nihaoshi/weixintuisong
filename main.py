@@ -189,10 +189,9 @@ def tip():
         res = conn.getresponse()
         data = res.read()
         data = json.loads(data)
-        tips = data["result"]["list"][0]["tips"]
-        return tips
+        return data["result"]["list"][0]["tips"]
     else:
-        return "",""
+        return ""
 
 #推送信息
 def send_message(to_user, access_token, city_name, weather, max_temperature, min_temperature, pipi, lizhi, tips, note_en, note_ch, health_tip, lucky_):
